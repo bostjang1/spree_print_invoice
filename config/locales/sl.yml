@@ -1,0 +1,16 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+
+sl:
+  customer_invoice: Račun
+  footer_left: "Return in Other info"
+  footer_left2: " 14 days or never"
+
+  footer_right: "Podjetje"
+  footer_right2: " Lekarna Nove Poljane -  www.lekarnar.com"
+  
+  print_note: To ni originalni račun (NE POŠLJI STRANKI)
+  
+  invoice_print: Natisni račun
+  packaging_slip_print: Natisni spremnico
+  packaging_slip: Spremnica
+  

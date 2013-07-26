@@ -1,3 +1,4 @@
+# encoding: utf-8
 Spree::Admin::OrdersController.class_eval do
   def show
     load_order

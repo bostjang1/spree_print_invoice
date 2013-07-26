@@ -4,7 +4,9 @@
 	<% end %>
 	<% if @order.completed_at? %>
 		<li><%= button_link_to t(:invoice), spree.admin_order_path(@order, :pdf), :icon => 'icon-print' %></li>
-	<% end %>
+	   
+    <li><%= button_link_to "pozivaj za mnenje", admin_add_to_yotpo_path(@order.number), :icon => 'icon-money' %></li>
+  <% end %>
   <% if @order.can_cancel?  %>
   <li>
     <%= button_link_to t(:cancel_order), fire_admin_order_url(@order.number, { :e => 'cancel' }), :icon => 'icon-trash', :data => { :confirm => "#{t(:are_you_sure)}?" } %>  
