@@ -1,7 +1,4 @@
 <% content_for :page_actions do %>
-	<% if @order.state.downcase == 'canceled' %>
-		<li><%= button_link_to t(:credit_note), spree.admin_order_path(@order, :pdf, :orderstate => @order.state.downcase ), :icon => 'icon-print' %></li>
-	<% end %>
 	<% if @order.completed_at? %>
 		<li><%= button_link_to t(:invoice), spree.admin_order_path(@order, :pdf), :icon => 'icon-print' %></li>
 	   

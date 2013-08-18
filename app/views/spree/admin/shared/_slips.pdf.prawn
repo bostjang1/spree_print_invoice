@@ -129,7 +129,7 @@ pdf.bounding_box [280,588], :width => 330 do
   pdf.font("Roboto", :style => :normal, :size => 15)
   pdf.text "#{order.ship_address.firstname.mb_chars.upcase} #{order.ship_address.lastname.mb_chars.upcase}"
   pdf.text "#{order.ship_address.address1.mb_chars.upcase}"
-  pdf.text "#{order.ship_address.address2.mb_chars.upcase}" if order.ship_address.address2 != ""
+  pdf.text "#{order.ship_address.address2.mb_chars.upcase}" if order.ship_address.address2 && order.ship_address.address2 != ""
   pdf.text "#{order.ship_address.zipcode} #{order.ship_address.city.mb_chars.upcase}"
   pdf.text "#{order.ship_address.country.name.mb_chars.upcase}" if order.ship_address.country_id != 1
   if order.shipment.shipping_method == "Osebni prevzem v Lekarni Nove Poljane"
@@ -153,22 +153,22 @@ pdf.stroke_line 0, 510, 550, 510
 pdf.move_down(20)
 pdf.text "Naročilo ##{order.number} - #{order.ship_address.firstname.mb_chars.upcase} #{order.ship_address.lastname.mb_chars.upcase}#{(order.shipment.tracking ? " - " + order.shipment.tracking : "")}", :size => 16, :style => :normal
 
-if order.shipment.shipping_method == "Osebni prevzem v Lekarni Nove Poljane"
+if order.shipment.shipping_method.name == "Osebni prevzem"
  pdf.move_down(5)
  pdf.text "Osebni prevzem"+(((order.payments.last.payment_method.name == "Plačilo po povzetju") or (order.payments.last.payment_method.name == "Osebni prevzem")) ? " - plačilo ob prevzemu" : "") , :size => 14, :style => :normal
- pdf.stroke_line 0,476,280,476
- pdf.stroke_line 0,460,280,460
+ pdf.stroke_line 0,468,280,468
+ pdf.stroke_line 0,448,280,448
 end
-if order.shipment.shipping_method == "GLS dostava"
+if order.shipment.shipping_method.name == "GLS"
  pdf.move_down(5)
  pdf.text "GLS dostava" , :size => 14, :style => :normal
- pdf.stroke_line 0,476,280,476
- pdf.stroke_line 0,460,280,460
+ pdf.stroke_line 0,468,100,468
+ pdf.stroke_line 0,448,100,448
 end
 
 pdf.move_down(5)
 pdf.font("Roboto", :style => :normal, :size => 10)
-pdf.text "Datum: #{l order.created_at.to_date}"
+pdf.text "Datum: #{l order.completed_at}"
 pdf.move_down(10)
 
 items = [["Izdelek", "Kol", "Cena", "Skupaj"]]
