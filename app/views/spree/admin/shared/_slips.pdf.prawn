@@ -17,7 +17,7 @@ pdf.fill_color = "444444"
 for order in @orders do
 
 cod = order.payments.last.payment_method.is_a?(Spree::CashOnDelivery::PaymentMethod)
-shipping_method = order.shipment.shipping_method.name
+shipping_method = order.shipment ? order.shipment.shipping_method.name : ""
 posta = (shipping_method == "Pošta Slovenije")
 gls = (shipping_method == "GLS")
 prevzem = (shipping_method == "Osebni prevzem")
