@@ -201,7 +201,7 @@ items << [  '','', "Skupaj za plačilo", "#{number_to_currency(order.total)} €
 
 pdf.text "Naročeni izdelki", :size => 10, :style => :bold
 
-pdf.font("Roboto", :style => :normal, :size => 8)
+pdf.font("Roboto", :style => :normal, :size => 10)
 pdf.table( items, #:border_style => :grid,
   #:row_colors => ["FFFFFF","FFFFFF"],
   #:headers => ["Izdelek", "Količina", "Cena", "Skupaj"],
