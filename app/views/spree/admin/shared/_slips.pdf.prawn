@@ -242,12 +242,14 @@ pdf.move_down(5)
     tableheader = make_cell(:content => "Podatki za dostavo", :font_style => :bold)
 
     addressdata = [[l_tableheader, tableheader]] 
+    if left_address && right_address
     addressdata << ["#{left_address.firstname} #{left_address.lastname}", "#{right_address.firstname} #{right_address.lastname}"]       
     addressdata << [left_address.address1, right_address.address1] unless prevzem       
     addressdata << [left_address.address2, right_address.address2] unless left_address.address2.blank? and right_address.address2.blank?       
     addressdata << ["#{left_address.zipcode} #{left_address.city}  #{(left_address.state ? left_address.state.abbr : "")} ", "#{right_address.zipcode} #{right_address.city} #{(right_address.state ? right_address.state.abbr : "")}"] unless prevzem               
     addressdata << [left_address.country.name, right_address.country.name] if order.ship_address.country_id != 1
     addressdata << ["tel: #{order.bill_address.phone}", "#{ prevzem ? "tel prevzemnika:" : "tel za dostavo"} #{order.ship_address.phone}"]
+    end
     addressdata << ["Način plačila: #{order.payments.last.payment_method.name}", "Način dostave: #{order.shipment.shipping_method.name.capitalize}"]
     addressdata << ["email: #{order.email}", ""]
     addressdata << ["št. naročil: #{Spree::Order.find_all_by_email(order.email, :conditions => "completed_at IS NOT null AND shipment_state = 'shipped'").count}", "dodatna navodila: #{order.shipment.special_instructions}"]
