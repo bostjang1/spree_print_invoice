@@ -180,7 +180,7 @@ items += order.line_items.map do |item|
   [
     item.variant.product.name+((item.variant.product.promo && item.variant.product.promo != "") ? " ("+item.variant.product.promo+")" : "")+((item.variant.product.comment and item.variant.product.comment != "") ? " ("+item.variant.product.comment+") " : " ")+options.join(" | "),
     item.quantity,
-    number_to_currency(item.price)+" €" + (item.variant.product.sale_price != 0.00 ? " (-"+item.variant.product.discount_percentage.round(2).to_s.gsub(".", ",")+"%)" : ""),
+    number_to_currency(item.price)+" €" + (item.variant.product.original_price != item.price ? number_to_currency(item.variant.product.original_price) + " (-"+item.variant.product.discount_percentage(item.price).round(2).to_s.gsub(".", ",")+"%)" : ""),
     number_to_currency(item.price * item.quantity) + " €"
   ]
 end
