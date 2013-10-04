@@ -252,7 +252,7 @@ pdf.move_down(5)
     end
     addressdata << ["Način plačila: #{order.payments.last.payment_method.name}", "Način dostave: #{order.shipment.shipping_method.name.capitalize}"]
     addressdata << ["email: #{order.email}", ""]
-    addressdata << ["št. naročil: #{Spree::Order.find_all_by_email(order.email, :conditions => "completed_at IS NOT null AND shipment_state = 'shipped'").count}", "dodatna navodila: #{order.shipment.special_instructions}"]
+    addressdata << ["št. naročil: #{Spree::Order.find_all_by_email(order.email, :conditions => "completed_at IS NOT null AND shipment_state = 'shipped'").count}", "dodatna navodila: #{order.special_instructions}"]
     
     table(addressdata, :column_widths => [340, 200], :cell_style => {:padding => [0, 0, 0, 0], :border_width => 0, :size => 10}) do
       row(1).style :size => 14
