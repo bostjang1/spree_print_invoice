@@ -261,10 +261,11 @@ pdf.move_down(5)
       row(-4).style :padding_bottom => 4
       row(-5).style :padding_bottom => 10
     end  
-
-#pdf.move_down(5)
-#pdf.text "Opombe", :size => 10, :style => :bold
-#pdf.text "#{order.user.note}"
+if order.user && order.user.comment != ""
+  pdf.move_down(5)
+  pdf.text "Admin opombe za uporabnika", :size => 10, :style => :bold
+  pdf.text "#{order.user.comment}"
+end
 
 #if order.payment_type == APP_CONFIG['payment_types']['cash'] 
 #  pdf.bounding_box [350,85], :width => 200 do
