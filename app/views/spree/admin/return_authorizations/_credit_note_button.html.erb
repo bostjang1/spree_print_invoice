@@ -1,0 +1,3 @@
+<% if @return_authorization.received? %>
+	<div class="toolbar"><%= button_link_to t(:credit_note_print), object_url(@return_authorization, :pdf), :icon => 'pdf' %></div>
+<% end %>

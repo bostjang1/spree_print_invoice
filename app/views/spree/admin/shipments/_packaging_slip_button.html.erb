@@ -1,0 +1,3 @@
+<% if @order.completed_at? %>
+	<div class="toolbar"><%= button_link_to t(:packaging_slip_print), spree.admin_order_shipment_path(@shipment.order, @shipment, :pdf), :icon => 'pdf' %></div>
+<% end %>
