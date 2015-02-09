@@ -143,7 +143,7 @@ end
 
 else
   pdf.bounding_box [0,740], :width => 550, :height => 225 do
-  logo = "#{Rails.root}/app/assets/images/pdf-lekarnar-logo.png" 
+  logo = "#{Rails.root}/app/assets/images/lekarnar_logo.png" 
   pdf.image logo, :scale => 0.4, :position => :left,   :vposition => :top
 end
 end # if posta
