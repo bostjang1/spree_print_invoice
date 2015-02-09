@@ -25,7 +25,7 @@ prevzem = (shipping_method == "Osebni prevzem")
 if posta
 
 pdf.bounding_box [0,740], :width => 100 do
-  logo = "#{Rails.root}/app/assets/images/pdf-lekarnar-logo.png" 
+  logo = "#{Rails.root}/app/assets/images/lekarnar_logo.png" 
   pdf.image logo, :scale => 0.4, :position => :left,   :vposition => :top
 end
 
@@ -115,7 +115,7 @@ pdf.bounding_box [280,740], :width => 330 do
   pdf.text "Poštnina EUR:"
   pdf.stroke_line 110,0,270,0
   pdf.move_down(5)
-  pdf.text "DDV 20% EUR:"
+  pdf.text "DDV 22% EUR:"
   pdf.stroke_line 110,0,270,0
 
 
